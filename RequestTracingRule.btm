@@ -1,0 +1,15 @@
+RULE start
+CLASS io.smallrye.graphql.client.vertx.typesafe.VertxTypesafeGraphQLClientProxy
+METHOD request
+AT ENTRY
+IF true
+DO traceln("STARTED: " + System.nanoTime() + " ns");
+ENDRULE
+
+RULE end
+CLASS io.smallrye.graphql.client.vertx.typesafe.VertxTypesafeGraphQLClientProxy
+METHOD request
+AT EXIT
+IF true
+DO traceln("ENDED: " + System.nanoTime()+ " ns");
+ENDRULE
